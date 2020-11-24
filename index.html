@@ -5,8 +5,13 @@
   <title>Rock Paper Scissors Game</title>
 </head>
 <body>
-
   <script>
+
+
+let playerScore = 0
+let computerScore = 0
+
+// Make Selection for Computer//
 
 function computerPlay(){
 
@@ -25,10 +30,7 @@ function computerPlay(){
   }
 };
 
-
-playerScore = 0
-computerScore = 0
-
+// Actual Game //
 
 function play(playerSelection){
 
@@ -83,7 +85,6 @@ else if (computerScore == 5){
 else if (playerScore == 5){
   alert('you reached ' + playerScore + ' points, you Win!')
 }
-
 }
 
 
