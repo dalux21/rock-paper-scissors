@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Rock Paper Scissors Game</title>
+</head>
+<body>
+
+  <script>
+
+function computerPlay(){
+
+  let computerSelection = Math.floor(Math.random()*3);
+  
+  if (computerSelection == 0) {
+    return "rock";
+  }
+
+  else if (computerSelection == 1){
+  return "paper";
+  }
+
+  else {
+    return 'scissors';
+  }
+};
+
+
+
+function play(playerSelection){
+
+let computerSelection = computerPlay()
+playerSelection = playerSelection.toLowerCase()
+let message = ''
+let playerScore = 0
+let computerScore = 0
+let i 
+
+for (i = 0; i < 5; i++){
+  
+if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors'){
+
+  if (playerSelection == 'rock' && computerSelection == 'scissor')
+  {
+    message = `You win! ${playerSelection}  beats  ${computerSelection}`
+    console.log(message)
+    playerScore++
+  }
+  else if (playerSelection == 'rock' && computerSelection == 'paper'){
+    message = `You lose! ${computerSelection}  beats  ${playerSelection}`;
+    console.log(message)
+    playerScore++
+    }
+  
+  else if (playerSelection == computerSelection){
+    message = `It's a draw! You both chose ${playerSelection}`;
+    return message
+    }
+    
+  else if (playerSelection == 'paper' && computerSelection == 'scissors'){
+    message = `You lose! ${computerSelection}  beats  ${playerSelection}`;
+    return message
+    computerScore++
+    }
+  else if (playerSelection == 'paper' && computerSelection == 'rock'){
+    message = `You win! ${playerSelection}  beats  ${computerSelection}`;
+    return message
+    playerScore++
+    }
+  else if (playerSelection == 'scissors' && computerSelection == 'paper'){
+    message = `You win! ${playerSelection}  beats  ${computerSelection}`;
+    return message
+    playerScore++
+    }
+    else if (playerSelection == 'scissors' && computerSelection == 'rock'){
+    message = `You lose! ${computerSelection}  beats  ${playerSelection}`;
+    return message
+    computerScore++
+    }
+  }
+  else {
+    alert(`You have to enter "rock", "paper" or "scissors"`)
+  }
+}
+console.log(play(playerSelection,computerSelection))
+}
+
+</script>
