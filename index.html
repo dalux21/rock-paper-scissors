@@ -26,63 +26,66 @@ function computerPlay(){
 };
 
 
+playerScore = 0
+computerScore = 0
+
 
 function play(playerSelection){
 
 let computerSelection = computerPlay()
 playerSelection = playerSelection.toLowerCase()
 let message = ''
-let playerScore = 0
-let computerScore = 0
-let i 
 
-for (i = 0; i < 5; i++){
-  
-if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors'){
+if (computerScore < 5 && playerScore < 5){
 
-  if (playerSelection == 'rock' && computerSelection == 'scissor')
-  {
-    message = `You win! ${playerSelection}  beats  ${computerSelection}`
-    console.log(message)
-    playerScore++
-  }
-  else if (playerSelection == 'rock' && computerSelection == 'paper'){
-    message = `You lose! ${computerSelection}  beats  ${playerSelection}`;
-    console.log(message)
-    playerScore++
+  if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors'){
+
+    if (playerSelection == 'rock' && computerSelection == 'scissor')
+    {
+      message = `You win! ${playerSelection}  beats  ${computerSelection}`
+      playerScore++
     }
-  
-  else if (playerSelection == computerSelection){
-    message = `It's a draw! You both chose ${playerSelection}`;
-    return message
+    else if (playerSelection == 'rock' && computerSelection == 'paper'){
+      message = `You lose! ${computerSelection}  beats  ${playerSelection}`;
+      computerScore++
     }
-    
-  else if (playerSelection == 'paper' && computerSelection == 'scissors'){
-    message = `You lose! ${computerSelection}  beats  ${playerSelection}`;
-    return message
-    computerScore++
+   
+    else if (playerSelection == 'paper' && computerSelection == 'scissors'){
+      message = `You lose! ${computerSelection}  beats  ${playerSelection}`;
+      computerScore++
     }
-  else if (playerSelection == 'paper' && computerSelection == 'rock'){
-    message = `You win! ${playerSelection}  beats  ${computerSelection}`;
-    return message
-    playerScore++
+    else if (playerSelection == 'paper' && computerSelection == 'rock'){
+      message = `You win! ${playerSelection}  beats  ${computerSelection}`;
+      playerScore++
     }
-  else if (playerSelection == 'scissors' && computerSelection == 'paper'){
-    message = `You win! ${playerSelection}  beats  ${computerSelection}`;
-    return message
-    playerScore++
+    else if (playerSelection == 'scissors' && computerSelection == 'paper'){
+      message = `You win! ${playerSelection}  beats  ${computerSelection}`;
+      playerScore++
     }
     else if (playerSelection == 'scissors' && computerSelection == 'rock'){
-    message = `You lose! ${computerSelection}  beats  ${playerSelection}`;
-    return message
-    computerScore++
+      message = `You lose! ${computerSelection}  beats  ${playerSelection}`;
+      computerScore++
+    }
+    else if (playerSelection == computerSelection){
+      message = `It's a draw! You both chose ${playerSelection}`;
     }
   }
+
   else {
     alert(`You have to enter "rock", "paper" or "scissors"`)
   }
+  return message;
 }
-console.log(play(playerSelection,computerSelection))
+  
+else if (computerScore == 5){
+  alert('Game Over computer has ' + computerScore + ' points');
 }
+else if (playerScore == 5){
+  alert('you reached ' + playerScore + ' points, you Win!')
+}
+
+}
+
+
 
 </script>
