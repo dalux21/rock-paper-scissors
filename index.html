@@ -31,41 +31,37 @@ function computerPlay(){ // Returns Rock, paper or scissors for computer
 };
 
 
-function play(){
+function playRound(playerSelection, computerSelection){
 
-let playerSelection = prompt('rock, paper or scissors?')
-let computerSelection = computerPlay()
 playerSelection = playerSelection.toLowerCase()
 let message = ''
-
-
 
   if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors'){
 
     if (playerSelection == 'rock' && computerSelection == 'scissors')
     {
-      message = `You win! ${playerSelection}  beats  ${computerSelection}`
+      message = winMessage()
       playerScore++
     }
     else if (playerSelection == 'rock' && computerSelection == 'paper'){
-      message = `You lose! ${computerSelection}  beats  ${playerSelection}`;
+      message = loseMessage();
       computerScore++
     }
    
     else if (playerSelection == 'paper' && computerSelection == 'scissors'){
-      message = `You lose! ${computerSelection}  beats  ${playerSelection}`;
+      message = loseMessage();
       computerScore++
     }
     else if (playerSelection == 'paper' && computerSelection == 'rock'){
-      message = `You win! ${playerSelection}  beats  ${computerSelection}`;
+      message = winMessage();
       playerScore++
     }
     else if (playerSelection == 'scissors' && computerSelection == 'paper'){
-      message = `You win! ${playerSelection}  beats  ${computerSelection}`;
+      message = winMessage();
       playerScore++
     }
     else if (playerSelection == 'scissors' && computerSelection == 'rock'){
-      message = `You lose! ${computerSelection}  beats  ${playerSelection}`;
+      message = loseMessage()
       computerScore++
     }
     else if (playerSelection == computerSelection){
@@ -78,13 +74,23 @@ let message = ''
   }
   return message;
 }
-  
-play();
+  let playerSelection = 'rock'
+  let computerSelection = computerPlay()
+
+console.log(playRound(playerSelection, computerSelection));
 
 //helper function RANDOM
 
 function randomZeroToTwo(){
   return Math.floor(Math.random()*3);
+}
+
+function winMessage(){
+  return `You win! ${playerSelection} beats ${computerSelection}`
+}
+
+function loseMessage(){
+  return `You lose! ${computerSelection} beats ${playerSelection}`
 }
 
 </script>
