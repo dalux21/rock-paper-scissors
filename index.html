@@ -27,13 +27,13 @@ playerSelection = playerSelection.toLowerCase()
   if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors'){
 
     if (playerWin()){
-          message = alert(winMessage());
+          message = console.log(winMessage());
         }
     else if(computerWin()){
-        message = alert(loseMessage());
+        message = console.log(loseMessage());
       }    
     else {
-      message = alert(`It's a draw! You both chose ${playerSelection}`);
+      message = console.log(`It's a draw! You both chose ${playerSelection}`);
     }
   }
   else {
