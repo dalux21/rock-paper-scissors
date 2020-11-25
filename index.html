@@ -6,30 +6,20 @@
 </head>
 <body>
   <script>
-
-
 let playerScore = 0
 let computerScore = 0
 
-// Make Selection for Computer//
 
-function computerPlay(){ // Returns Rock, paper or scissors for computer
-
-  let computerChoice = randomZeroToTwo()   // Assigns a randnom 0 to 2 number to computerChoice
-
-  switch(computerChoice){
-    
-    case 0:
-      return `rock`
-
-    case 1:                                 
-      return `paper`;
-
-    case 2:
-      return `scissors`;
-  }
-};
-
+game();
+//Runs the game 5 times and assigns scores to player or the computer
+function game(){
+  
+  for (i = 0; i < 5; i++){
+    let playerSelection = prompt(`Rock, Paper or Scissors? :)`)
+let computerSelection = computerPlay()
+  playRound(playerSelection, computerSelection)}
+}
+// Runs a play round and returns win or lose message
 function playRound(playerSelection, computerSelection){
 
 playerSelection = playerSelection.toLowerCase()
@@ -37,13 +27,13 @@ playerSelection = playerSelection.toLowerCase()
   if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors'){
 
     if (playerWin()){
-          message = winMessage();
+          message = alert(winMessage());
         }
     else if(computerWin()){
-        message = loseMessage();
+        message = alert(loseMessage());
       }    
     else {
-      message = `It's a draw! You both chose ${playerSelection}`;
+      message = alert(`It's a draw! You both chose ${playerSelection}`);
     }
   }
   else {
@@ -53,25 +43,39 @@ playerSelection = playerSelection.toLowerCase()
 }
 
 
-  let playerSelection = prompt(`Rock, Paper or Scissors? :)`)
-  let computerSelection = computerPlay()
-  console.log(playRound(playerSelection, computerSelection));
 
-//helper function RANDOM
 
+// Chooses a random Number from zero to two
 function randomZeroToTwo(){
   return Math.floor(Math.random()*3);
 }
-//Helper Function Win Message
-function winMessage(){
+// Returns Rock, paper or scissors for computer
+function computerPlay(){ 
+
+let computerChoice = randomZeroToTwo()   // Assigns a randnom 0 to 2 number to computerChoice
+
+switch(computerChoice){
+  
+  case 0:
+    return `rock`
+
+  case 1:                                 
+    return `paper`;
+
+  case 2:
+    return `scissors`;
+}
+}
+// Returns a win message if the player wins
+function winMessage(playerSelection, computerSelection){
   return `You win! ${playerSelection} beats ${computerSelection}`
 }
-// Helper Function Lose Message
-function loseMessage(){
+// Returns a lose message if the player loses
+function loseMessage(playerSelection, computerSelection){
   return `You lose! ${computerSelection} beats ${playerSelection}`  
 }
-// Helper Function Player Wins
-function playerWin(){
+// Returns true if the player wins 
+function playerWin(playerSelection, computerSelection){
   if (
         (playerSelection == 'rock' && computerSelection == 'scissors') || 
         (playerSelection == 'paper' && computerSelection == 'rock')  ||
@@ -79,8 +83,8 @@ function playerWin(){
           return true
         }
 }
-// Helper Function Computer Wins
-function computerWin(){
+// Returns true if computer wins
+function computerWin(playerSelection, computerSelection){
   if (
       (playerSelection == 'rock' && computerSelection == 'paper') ||
       (playerSelection == 'paper' && computerSelection == 'scissors') ||
