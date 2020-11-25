@@ -8,19 +8,13 @@
   <script>
 let playerScore = 0
 let computerScore = 0
-
-
-game();
-//Runs the game 5 times and assigns scores to player or the computer
-function game(){
-  
-  for (i = 0; i < 5; i++){
-    let playerSelection = prompt(`Rock, Paper or Scissors? :)`)
+let playerSelection = prompt(`Rock, Paper or Scissors? :)`)
 let computerSelection = computerPlay()
-  playRound(playerSelection, computerSelection)}
-}
+
+playRound()
+
 // Runs a play round and returns win or lose message
-function playRound(playerSelection, computerSelection){
+function playRound(){
 
 playerSelection = playerSelection.toLowerCase()
 
@@ -67,15 +61,15 @@ switch(computerChoice){
 }
 }
 // Returns a win message if the player wins
-function winMessage(playerSelection, computerSelection){
+function winMessage(){
   return `You win! ${playerSelection} beats ${computerSelection}`
 }
 // Returns a lose message if the player loses
-function loseMessage(playerSelection, computerSelection){
+function loseMessage(){
   return `You lose! ${computerSelection} beats ${playerSelection}`  
 }
 // Returns true if the player wins 
-function playerWin(playerSelection, computerSelection){
+function playerWin(){
   if (
         (playerSelection == 'rock' && computerSelection == 'scissors') || 
         (playerSelection == 'paper' && computerSelection == 'rock')  ||
@@ -84,7 +78,7 @@ function playerWin(playerSelection, computerSelection){
         }
 }
 // Returns true if computer wins
-function computerWin(playerSelection, computerSelection){
+function computerWin(){
   if (
       (playerSelection == 'rock' && computerSelection == 'paper') ||
       (playerSelection == 'paper' && computerSelection == 'scissors') ||
