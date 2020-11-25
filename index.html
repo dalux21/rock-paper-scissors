@@ -30,36 +30,29 @@ function computerPlay(){ // Returns Rock, paper or scissors for computer
   }
 };
 
-
 function playRound(playerSelection, computerSelection){
 
 playerSelection = playerSelection.toLowerCase()
-let message = ''
 
   if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors'){
 
-    if (
-        (playerSelection == 'rock' && computerSelection == 'scissors') || 
-        (playerSelection == 'paper' && computerSelection == 'rock')  ||
-        (playerSelection == 'scissors' && computerSelection == 'paper')){
+    if (playerWin()){
           message = winMessage();
         }
-    else if (
-      (playerSelection == 'rock' && computerSelection == 'paper') ||
-      (playerSelection == 'paper' && computerSelection == 'scissors') ||
-      (playerSelection == 'scissors' && computerSelection == 'rock')){
+    else if(computerWin()){
         message = loseMessage();
       }    
     else {
       message = `It's a draw! You both chose ${playerSelection}`;
     }
   }
-
   else {
     alert(`You have to enter "rock", "paper" or "scissors"`)
   }
   return message;
 }
+
+
   let playerSelection = prompt(`Rock, Paper or Scissors? :)`)
   let computerSelection = computerPlay()
   console.log(playRound(playerSelection, computerSelection));
@@ -77,7 +70,23 @@ function winMessage(){
 function loseMessage(){
   return `You lose! ${computerSelection} beats ${playerSelection}`  
 }
-
+// Helper Function Player Wins
+function playerWin(){
+  if (
+        (playerSelection == 'rock' && computerSelection == 'scissors') || 
+        (playerSelection == 'paper' && computerSelection == 'rock')  ||
+        (playerSelection == 'scissors' && computerSelection == 'paper')){
+          return true
+        }
+}
+// Helper Function Computer Wins
+function computerWin(){
+  if (
+      (playerSelection == 'rock' && computerSelection == 'paper') ||
+      (playerSelection == 'paper' && computerSelection == 'scissors') ||
+      (playerSelection == 'scissors' && computerSelection == 'rock'))
+      return true;
+}
 
 </script>
 </body>
