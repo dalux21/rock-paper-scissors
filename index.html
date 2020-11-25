@@ -7,44 +7,55 @@
 <body>
   <script>
 let playerScore = 0
-let computerScore = 0
-let playerSelection = prompt(`Rock, Paper or Scissors? :)`)
-let computerSelection = computerPlay()
+let computerScore = 0 
+game();
 
-playRound()
-
-// Runs a play round and returns win or lose message
+// Game function runs the playRound function 5 times and evaluate who is the winner of the game
+function game(){  
+  for (i=0; i<5; i++){
+    playRound()
+}
+  if (playerScore > computerScore) {
+    alert(`You win! Your score: ${playerScore} - Computer score: ${computerScore}`)}
+  else{
+    alert(`You lose! Computer score: ${computerScore} - Your score: ${playerScore}`)}
+}
+// Function that decides the winner
 function playRound(){
-
+let playerSelection = prompt(`Rock, paper or scissors? :)`,`Make your choice...`)
+let computerSelection = computerPlay()
 playerSelection = playerSelection.toLowerCase()
 
-  if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors'){
+  if (playerSelection === `rock` || playerSelection === `paper` || playerSelection === `scissors`){
 
-    if (playerWin()){
-          message = console.log(winMessage());
-        }
-    else if(computerWin()){
-        message = console.log(loseMessage());
-      }    
-    else {
-      message = console.log(`It's a draw! You both chose ${playerSelection}`);
+    if ((playerSelection == `rock` && computerSelection == `scissors`) ||
+    (playerSelection == `paper` && computerSelection == `rock`) ||
+    (playerSelection == `scissors` && computerSelection == `paper`))
+    {
+      playerScore++
+      message = alert(`You win! ${playerSelection}  beats  ${computerSelection} | Your score: ${playerScore} - Computer score: ${computerScore}`)
+      
     }
-  }
-  else {
-    alert(`You have to enter "rock", "paper" or "scissors"`)
-  }
+    else if (playerSelection == computerSelection){
+      message = alert(`It's a draw! You both chose ${playerSelection} | Your score: ${playerScore} - Computer score: ${computerScore}`);
+    }
+    else {
+      computerScore++
+      message = alert(`You lose! ${computerSelection}  beats  ${playerSelection} | Your score: ${playerScore} - Computer score: ${computerScore}`);
+      
+    }
   return message;
 }
-
-
-
-
-// Chooses a random Number from zero to two
+else {
+    alert(`You have to enter "rock", "paper" or "scissors"`)
+  }
+}
+//helper function RANDOM
 function randomZeroToTwo(){
   return Math.floor(Math.random()*3);
 }
-// Returns Rock, paper or scissors for computer
-function computerPlay(){ 
+// Make Selection for Computer//
+function computerPlay(){ // Returns Rock, paper or scissors for computer
 
 let computerChoice = randomZeroToTwo()   // Assigns a randnom 0 to 2 number to computerChoice
 
@@ -59,32 +70,7 @@ switch(computerChoice){
   case 2:
     return `scissors`;
 }
-}
-// Returns a win message if the player wins
-function winMessage(){
-  return `You win! ${playerSelection} beats ${computerSelection}`
-}
-// Returns a lose message if the player loses
-function loseMessage(){
-  return `You lose! ${computerSelection} beats ${playerSelection}`  
-}
-// Returns true if the player wins 
-function playerWin(){
-  if (
-        (playerSelection == 'rock' && computerSelection == 'scissors') || 
-        (playerSelection == 'paper' && computerSelection == 'rock')  ||
-        (playerSelection == 'scissors' && computerSelection == 'paper')){
-          return true
-        }
-}
-// Returns true if computer wins
-function computerWin(){
-  if (
-      (playerSelection == 'rock' && computerSelection == 'paper') ||
-      (playerSelection == 'paper' && computerSelection == 'scissors') ||
-      (playerSelection == 'scissors' && computerSelection == 'rock'))
-      return true;
-}
+};
 
 </script>
 </body>
